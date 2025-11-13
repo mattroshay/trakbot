@@ -1,0 +1,17 @@
+python_course:
+  user: one
+  link: https://www.udemy.com/course/python-bootcamp/
+  description: Python Bootcamp Course on Udemy
+  keywords: price
+
+iphone_price:
+  user: one
+  link: https://www.apple.com/iphone/
+  description: iPhone 15 Pro Max Price Tracking
+  keywords: price, available
+
+job_posting:
+  user: two
+  link: https://www.linkedin.com/jobs/view/123456/
+  description: Software Engineer Position at Tech Corp
+  keywords: status

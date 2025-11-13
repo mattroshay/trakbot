@@ -1,0 +1,47 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Tracker Details</h1>
+    <%= link_to "Back to Trackers", trackers_path, class: "btn btn-outline-secondary" %>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3><%= @tracker.description %></h3>
+    </div>
+    <div class="card-body">
+      <div class="mb-4">
+        <h5>Target URL</h5>
+        <p class="mb-1">
+          <%= link_to @tracker.link, @tracker.link, target: "_blank", class: "text-primary" %>
+          <i class="fas fa-external-link-alt ms-1 small"></i>
+        </p>
+      </div>
+
+      <% if @tracker.keywords.present? %>
+        <div class="mb-4">
+          <h5>Keywords</h5>
+          <p><span class="badge bg-secondary"><%= @tracker.keywords %></span></p>
+        </div>
+      <% end %>
+
+      <div class="mb-4">
+        <h5>Tracking Info</h5>
+        <p class="mb-1 text-muted">
+          <strong>Created:</strong> <%= @tracker.created_at.strftime("%B %d, %Y at %I:%M %p") %>
+        </p>
+        <p class="text-muted">
+          <strong>Last Updated:</strong> <%= @tracker.updated_at.strftime("%B %d, %Y at %I:%M %p") %>
+        </p>
+      </div>
+
+      <div class="alert alert-info">
+        <i class="fas fa-info-circle"></i>
+        <strong>Coming Soon:</strong> Change history and notifications will appear here once Phase 2 is implemented.
+      </div>
+    </div>
+    <div class="card-footer bg-transparent">
+      <%= link_to "Edit Tracker", edit_tracker_path(@tracker), class: "btn btn-primary" %>
+      <%= link_to "Delete Tracker", tracker_path(@tracker), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this tracker?" }, class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>

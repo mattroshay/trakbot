@@ -1,0 +1,37 @@
+<%= simple_form_for tracker do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :link,
+                required: true,
+                autofocus: true,
+                input_html: {
+                  class: 'form-control',
+                  placeholder: 'https://example.com/page-to-track'
+                },
+                hint: 'Enter the full URL of the page you want to track (must start with http:// or https://)' %>
+
+    <%= f.input :description,
+                required: true,
+                input_html: {
+                  class: 'form-control',
+                  placeholder: 'e.g., Python Course on Udemy, iPhone 15 Pro Price, Job Posting at Google',
+                  rows: 3
+                },
+                hint: 'Describe what you are tracking (3-500 characters)' %>
+
+    <%= f.input :keywords,
+                required: false,
+                input_html: {
+                  class: 'form-control',
+                  placeholder: 'e.g., price, available, in stock'
+                },
+                hint: 'Optional: Keywords to focus on when detecting changes' %>
+  </div>
+
+  <div class="form-actions mt-4">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', tracker.persisted? ? tracker_path(tracker) : trackers_path, class: 'btn btn-outline-secondary ms-2' %>
+  </div>
+<% end %>
