@@ -1,0 +1,44 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>My Trackers</h1>
+    <%= link_to "Add New Tracker", new_tracker_path, class: "btn btn-primary" %>
+  </div>
+
+  <% if @trackers.any? %>
+    <div class="row">
+      <% @trackers.each do |tracker| %>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title"><%= tracker.description %></h5>
+              <p class="card-text text-muted small">
+                <i class="fas fa-link"></i>
+                <%= link_to tracker.link.truncate(50), tracker.link, target: "_blank", class: "text-decoration-none" %>
+              </p>
+              <% if tracker.keywords.present? %>
+                <p class="card-text">
+                  <span class="badge bg-secondary"><%= tracker.keywords %></span>
+                </p>
+              <% end %>
+              <p class="card-text">
+                <small class="text-muted">Created <%= time_ago_in_words(tracker.created_at) %> ago</small>
+              </p>
+            </div>
+            <div class="card-footer bg-transparent">
+              <%= link_to "View", tracker_path(tracker), class: "btn btn-sm btn-outline-primary" %>
+              <%= link_to "Edit", edit_tracker_path(tracker), class: "btn btn-sm btn-outline-secondary" %>
+              <%= link_to "Delete", tracker_path(tracker), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-sm btn-outline-danger" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="text-center py-5">
+      <i class="fas fa-search fa-3x text-muted mb-3"></i>
+      <h3 class="text-muted">No trackers yet</h3>
+      <p class="text-muted">Start tracking changes on your favorite websites</p>
+      <%= link_to "Create your first tracker", new_tracker_path, class: "btn btn-primary mt-3" %>
+    </div>
+  <% end %>
+</div>

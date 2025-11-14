@@ -1,2 +1,49 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="row min-vh-100 align-items-center">
+    <div class="col-lg-6">
+      <h1 class="display-3 fw-bold mb-4">Track Changes.<br>Stay Informed.</h1>
+      <p class="lead mb-4">
+        Monitor price drops, content updates, and availability changes across your favorite websites.
+        Get notified when something changes.
+      </p>
+
+      <% if user_signed_in? %>
+        <%= link_to "Go to My Trackers", trackers_path, class: "btn btn-primary btn-lg me-3" %>
+        <%= link_to "Create New Tracker", new_tracker_path, class: "btn btn-outline-primary btn-lg" %>
+      <% else %>
+        <%= link_to "Get Started", new_user_registration_path, class: "btn btn-primary btn-lg me-3" %>
+        <%= link_to "Sign In", new_user_session_path, class: "btn btn-outline-primary btn-lg" %>
+      <% end %>
+
+      <div class="mt-5">
+        <h5 class="mb-3">Perfect for tracking:</h5>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <i class="fas fa-tag text-primary me-2"></i>
+            <strong>Price Changes</strong>
+            <p class="text-muted small mb-0">Monitor product prices on e-commerce sites</p>
+          </div>
+          <div class="col-md-6 mb-3">
+            <i class="fas fa-briefcase text-primary me-2"></i>
+            <strong>Job Postings</strong>
+            <p class="text-muted small mb-0">Track new openings on job boards</p>
+          </div>
+          <div class="col-md-6 mb-3">
+            <i class="fas fa-graduation-cap text-primary me-2"></i>
+            <strong>Course Updates</strong>
+            <p class="text-muted small mb-0">Get notified of course discounts</p>
+          </div>
+          <div class="col-md-6 mb-3">
+            <i class="fas fa-box text-primary me-2"></i>
+            <strong>Stock Availability</strong>
+            <p class="text-muted small mb-0">Know when items are back in stock</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6 text-center">
+      <i class="fas fa-chart-line" style="font-size: 15rem; color: #0d6efd; opacity: 0.1;"></i>
+    </div>
+  </div>
+</div>
